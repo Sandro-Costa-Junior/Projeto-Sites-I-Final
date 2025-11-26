@@ -1,0 +1,42 @@
+/* ...existing code... */
+:root {
+  --bg: hsl(0, 0%, 100%);
+  --text: #2a2323;
+  --accent: #0066cc;
+  --max-width: 1100px;
+  --gap: 1rem;
+}
+
+/* reset simples */
+* { box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; }
+
+/* estilos base */
+html, body { 
+    height: 100%; 
+    width: 100%;}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* layout */
+.container { max-width: var(--max-width); margin: 0 auto; padding: 1rem; }
+header { padding: 1rem 0; }
+nav ul { display: flex; gap: var(--gap); list-style: none; }
+a { color: var(--accent); text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* responsividade */
+@media (
+    max-width: 600px) 
+    {
+        .container { padding: 0.5rem; }
+        nav ul { flex-direction: column; gap: 0.5rem; }
+}
+/* ...existing code... */
