@@ -122,9 +122,8 @@ input:focus {
 }
 
 /* 
-   RESPONSIVIDADE (MOBILE)
-   Telas até ~600px (celular)
-    */
+   RESPONSIVIDADE
+   Telas até ~600px (celular) */
 @media (max-width: 600px) {
 
     body {

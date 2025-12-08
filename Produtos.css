@@ -139,9 +139,7 @@ body {
     cursor: pointer;
 }
 
-/* ===========================================
-   RESPONSIVIDADE — MOBILE
-   =========================================== */
+/* RESPONSIVIDADE — MOBILE */
 
 /* Telas menores que 768px (celulares grandes, celulares médios) */
 @media (max-width: 768px) {

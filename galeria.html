@@ -48,7 +48,7 @@
 
 </div>
 
-<!-- LIGHTBOX (VISUALIZAÇÃO EM TELA CHEIA) -->
+<!--LIGHTBOX -->
 <div id="lightbox" class="lightbox" onclick="fecharLightbox(event)">
     <span class="lightbox-close">&times;</span>
     <img id="lightbox-img" src="" alt="">
@@ -57,16 +57,16 @@
 
 <script>
     function voltarSobreNos() {
-        // Corrigido para bater com o nome real do arquivo
+        
         window.location.href = "sobre-nos.html";
     }
 
     function irCarrinho() {
-        // Corrigido para bater com o nome real do arquivo
+        
         window.location.href = "realizar-pedido.html";
     }
 
-    // ---------- LIGHTBOX ----------
+    //  LIGHTBOX 
     const imagensGaleria = document.querySelectorAll(".gallery-grid img");
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
