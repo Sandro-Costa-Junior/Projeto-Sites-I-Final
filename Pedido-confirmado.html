@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedido Confirmado</title>
+    <link rel="stylesheet" href="Pedido-confirmado.css">
+</head>
+<body>
+
+<div class="confirmed-container">
+
+    <header class="confirmed-header">
+        <div class="header-left">
+            <img src="Imagens/Cucas e Pães da Tia Rose 4.png" alt="Logo Tia Rose" class="confirmed-logo">
+            <h2>O que você vai pedir hoje?</h2>
+        </div>
+        <div class="header-right">
+            <button class="about-btn" onclick="irSobreNos()">Sobre Nós</button>
+        </div>
+    </header>
+
+    <main class="confirmed-main">
+        <h1>Confirmado</h1>
+
+        <div class="icon-wrapper">
+            <div class="check-circle">
+                <span>✓</span>
+            </div>
+        </div>
+
+        <section class="order-details-card">
+            <h2>Detalhes do pedido</h2>
+
+            <div class="detail-row">
+                <span>Total</span>
+                <span id="totalPedido">R$ 0,00</span>
+            </div>
+
+            <div class="detail-row">
+                <span>Data e horário do pedido</span>
+                <span id="dataHoraPedido">--/--/---- – --:--:--</span>
+            </div>
+
+            <div class="detail-row">
+                <span>Nome</span>
+                <span id="nomeCliente">Nome do cliente</span>
+            </div>
+
+        </section>
+
+        <button class="btn-continue" onclick="continuarComprando()">
+            Continuar comprando
+        </button>
+    </main>
+
+</div>
+
+<script>
+    // Preencher dados do pedido a partir do localStorage
+    window.addEventListener("load", function () {
+        const total = localStorage.getItem("totalPedido");
+        const data = localStorage.getItem("dataPedido");
+        const hora = localStorage.getItem("horaPedido");
+        const nome = localStorage.getItem("nomeCliente");
+
+        if (total) {
+            document.getElementById("totalPedido").textContent =
+                "R$ " + total.replace(".", ",");
+        }
+
+        if (data && hora) {
+            document.getElementById("dataHoraPedido").textContent =
+                `${data} – ${hora}`;
+        }
+
+        if (nome) {
+            document.getElementById("nomeCliente").textContent = nome;
+        }
+    });
+
+    function continuarComprando() {
+        window.location.href = "Produtos.html";
+    }
+
+    function irSobreNos() {
+        window.location.href = "Sobre-nos.html";
+    }
+</script>
+
+</body>
+</html>

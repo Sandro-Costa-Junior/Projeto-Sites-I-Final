@@ -1,0 +1,291 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #dcdcdc;
+}
+
+.checkout-container {
+    width: 1000px;
+    margin: 30px auto;
+}
+
+/* CABEÇALHO */
+.checkout-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.checkout-logo {
+    width: 70px;
+    border-radius: 6px;
+}
+
+.checkout-header h1 {
+    font-size: 24px;
+}
+
+/* BOTÃO VOLTAR PARA PRODUTOS */
+.btn-back-produtos {
+    margin-left: auto;          /* empurra o botão para a direita no flex */
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: none;
+    background: #cfcfcf;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-back-produtos:hover {
+    background: #b3b3b3;
+}
+/* PRINCIPAL */
+.checkout-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* CARRINHO */
+.cart-summary {
+    flex: 1;
+}
+
+.cart-box {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    width: 360px;
+}
+
+.cart-box h2 {
+    margin-bottom: 20px;
+}
+
+.cart-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.cart-line.subtotal {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.cart-line.total {
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* ENDEREÇO */
+.address-section {
+    flex: 1;
+    max-width: 380px;
+}
+
+.address-section h2 {
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.form-group input {
+    padding: 6px 8px;
+    border-radius: 4px;
+    border: 1px solid #a9a9a9;
+    font-size: 14px;
+}
+
+/* LINHA COMPLEMENTO + NÚMERO */
+.form-row {
+    display: flex;
+    gap: 8px;
+}
+
+.form-group.small {
+    max-width: 100px;
+}
+
+/* ERRO */
+.required-field.error {
+    border-color: red;
+}
+
+/* TOTAL */
+.total-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 18px 0;
+    padding-top: 8px;
+    border-top: 2px solid #305aae;
+    font-size: 14px;
+}
+
+.total-value {
+    color: #305aae;
+    font-weight: bold;
+}
+
+/* BOTÃO */
+.btn-submit {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 20px;
+    background: #305aae;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.btn-submit:hover {
+    background: #244690;
+}
+
+/* ===========================================
+   RESPONSIVIDADE — MOBILE
+   =========================================== */
+
+/* CELULARES ATÉ 768px (grande parte dos celulares modernos) */
+@media (max-width: 768px) {
+
+    .checkout-container {
+        width: 100%;
+        margin: 0;
+        padding: 0 10px;
+    }
+
+    .checkout-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .checkout-logo {
+        width: 60px;
+    }
+
+    .checkout-header h1 {
+        font-size: 20px;
+    }
+
+    .btn-back-produtos {
+        margin-left: 0;
+        margin-top: 8px;
+        width: 140px;
+        font-size: 14px;
+    }
+
+    /* Conteúdo principal deixa de ser duas colunas */
+    .checkout-main {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    /* CARRINHO */
+    .cart-box {
+        width: 100%;
+        padding: 18px;
+    }
+
+    .cart-line {
+        font-size: 13px;
+    }
+
+    .cart-line.total {
+        font-size: 15px;
+    }
+
+    /* ENDEREÇO */
+    .address-section {
+        max-width: 100%;
+    }
+
+    .form-group input,
+    .form-group.small input {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group.small {
+        max-width: 100%;
+    }
+
+    .total-line {
+        margin-top: 12px;
+        font-size: 14px;
+    }
+
+    .btn-submit {
+        font-size: 15px;
+        padding: 12px;
+    }
+}
+
+/* CELULARES PEQUENOS — até 480px */
+@media (max-width: 480px) {
+
+    .checkout-logo {
+        width: 55px;
+    }
+
+    .checkout-header h1 {
+        font-size: 18px;
+    }
+
+    .cart-box {
+        padding: 15px;
+    }
+
+    .cart-line {
+        font-size: 12px;
+    }
+
+    .cart-line.total {
+        font-size: 14px;
+    }
+
+    .address-section h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+    .total-value {
+        font-size: 15px;
+    }
+
+    .btn-submit {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

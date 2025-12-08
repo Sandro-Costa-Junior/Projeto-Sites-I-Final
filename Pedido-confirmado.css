@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #dcdcdc;
+}
+
+.confirmed-container {
+    width: 1000px;
+    margin: 30px auto;
+}
+
+/* CABEÇALHO */
+.confirmed-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.confirmed-logo {
+    width: 70px;
+    border-radius: 6px;
+}
+
+.header-left h2 {
+    font-size: 22px;
+    color: #006a4e;
+}
+
+.about-btn {
+    padding: 10px 28px;
+    border: none;
+    background: #cfcfcf;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* CONTEÚDO CENTRAL */
+.confirmed-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.confirmed-main h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+/* ÍCONE */
+.icon-wrapper {
+    margin-bottom: 30px;
+}
+
+.check-circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: #305aae;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.check-circle span {
+    color: #fff;
+    font-size: 70px;
+}
+
+/* CARTÃO */
+.order-details-card {
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+    width: 460px;
+    margin-bottom: 20px;
+}
+
+.order-details-card h2 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* TEXTO E BOTÃO */
+.receipt-text {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.btn-continue {
+    padding: 10px 40px;
+    border-radius: 20px;
+    border: none;
+    background: #305aae;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn-continue:hover {
+    background: #244690;
+}
+
+/* ===========================================
+   RESPONSIVIDADE — MOBILE
+   =========================================== */
+
+/* Celulares até 768px */
+@media (max-width: 768px) {
+
+    .confirmed-container {
+        width: 100%;
+        margin: 0;
+        padding: 0 12px;
+    }
+
+    .confirmed-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        margin-bottom: 40px;
+    }
+
+    .confirmed-logo {
+        width: 60px;
+    }
+
+    .header-left h2 {
+        font-size: 20px;
+    }
+
+    .about-btn {
+        width: 140px;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* CONTEÚDO CENTRAL */
+    .confirmed-main h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .check-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .check-circle span {
+        font-size: 60px;
+    }
+
+    /* CARTÃO DOS DETALHES */
+    .order-details-card {
+        width: 100%;
+        padding: 18px;
+        margin-bottom: 18px;
+    }
+
+    .order-details-card h2 {
+        font-size: 15px;
+    }
+
+    .detail-row {
+        font-size: 13px;
+    }
+
+    /* BOTÃO */
+    .btn-continue {
+        width: 70%;
+        font-size: 15px;
+        padding: 12px 0;
+    }
+}
+
+/* Celulares pequenos até 480px */
+@media (max-width: 480px) {
+
+    .confirmed-header {
+        margin-bottom: 30px;
+    }
+
+    .confirmed-logo {
+        width: 55px;
+    }
+
+    .header-left h2 {
+        font-size: 18px;
+    }
+
+    .confirmed-main h1 {
+        font-size: 22px;
+    }
+
+    .check-circle {
+        width: 110px;
+        height: 110px;
+    }
+
+    .check-circle span {
+        font-size: 55px;
+    }
+
+    .order-details-card {
+        padding: 16px;
+    }
+
+    .detail-row {
+        font-size: 12.5px;
+    }
+
+    .btn-continue {
+        width: 90%;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+}

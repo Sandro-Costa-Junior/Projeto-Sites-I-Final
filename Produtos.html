@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cardápio - Cucas e Pães da Tia Rose</title>
+    <link rel="stylesheet" href="Produtos.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header class="products-header">
+        <div class="header-left">
+            <img src="Imagens/Cucas e Pães da Tia Rose 4.png" alt="Logo Cucas e Pães da Tia Rose" class="products-logo">
+            <h1>O que você vai pedir hoje?</h1>
+        </div>
+
+        <div class="header-right">
+            <button class="btn-logout" onclick="voltarLogin()">Login</button>
+            <button class="about-btn" onclick="irSobreNos()">Sobre Nós</button>
+            <button class="cart-icon" onclick="irCarrinho()">🛒</button>
+        </div>
+    </header>
+
+    <main class="products-main">
+
+        <section class="products-grid">
+
+            <article class="product-card">
+                <img src="Imagens/amant-7.jpg" alt="Pão Integral" class="product-img">
+                <div class="product-info">
+                    <h2>Pão Integral</h2>
+                    <p>Farinha integral e 7 tipos de grãos.</p>
+                    <span class="price">R$ 18,00</span>
+                </div>
+                <div class="product-check">
+                    <button class="qty-btn" onclick="alterarQuantidade(this, -1)">−</button>
+                    <span class="qty">0</span>
+                    <button class="qty-btn" onclick="alterarQuantidade(this, 1)">+</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img src="Imagens/pao-de-espinafre-sem-gluten-00-removebg-preview.png" alt="Pão de Espinafre" class="product-img">
+                <div class="product-info">
+                    <h2>Pão de Espinafre</h2>
+                    <p>Farinha de trigo, leite, ovos e espinafre.</p>
+                    <span class="price">R$ 12,00</span>
+                </div>
+                <div class="product-check">
+                    <button class="qty-btn" onclick="alterarQuantidade(this, -1)">−</button>
+                    <span class="qty">0</span>
+                    <button class="qty-btn" onclick="alterarQuantidade(this, 1)">+</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img src="Imagens/Pao-branco-caseiro-Amish-removebg-preview.png" alt="Pão Sovado" class="product-img">
+                <div class="product-info">
+                    <h2>Pão Sovado</h2>
+                    <p>Farinha de trigo, leite e ovos.</p>
+                    <span class="price">R$ 12,00</span>
+                </div>
+                <div class="product-check">
+                    <button class="qty-btn" onclick="alterarQuantidade(this, -1)">−</button>
+                    <span class="qty">0</span>
+                    <button class="qty-btn" onclick="alterarQuantidade(this, 1)">+</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img src="Imagens/pao-de-aipim-mandioca-macaxeira-removebg-preview.png" alt="Pão de Mandioca" class="product-img">
+                <div class="product-info">
+                    <h2>Pão de Mandioca</h2>
+                    <p>Farinha de trigo, leite e ovos. Macio e saboroso.</p>
+                    <span class="price">R$ 12,00</span>
+                </div>
+                <div class="product-check">
+                    <button class="qty-btn" onclick="alterarQuantidade(this, -1)">−</button>
+                    <span class="qty">0</span>
+                    <button class="qty-btn" onclick="alterarQuantidade(this, 1)">+</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img src="Imagens/maxresdefault-removebg-preview.png" alt="Pão de Milho" class="product-img">
+                <div class="product-info">
+                    <h2>Pão de Milho</h2>
+                    <p>Farinha de milho, leite e ovos.</p>
+                    <span class="price">R$ 12,00</span>
+                </div>
+                <div class="product-check">
+                    <button class="qty-btn" onclick="alterarQuantidade(this, -1)">−</button>
+                    <span class="qty">0</span>
+                    <button class="qty-btn" onclick="alterarQuantidade(this, 1)">+</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img src="Imagens/Cuca caseira aqui caralho.png" alt="Cuca Alemã" class="product-img">
+                <div class="product-info">
+                    <h2>Cuca Alemã</h2>
+                    <p>Receita tradicional com farofa crocante.</p>
+                    <span class="price">R$ 24,00</span>
+                </div>
+                <div class="product-check">
+                    <button class="qty-btn" onclick="alterarQuantidade(this, -1)">−</button>
+                    <span class="qty">0</span>
+                    <button class="qty-btn" onclick="alterarQuantidade(this, 1)">+</button>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+    function irSobreNos() {
+        window.location.href = "Sobre-nos.html";
+    }
+
+    function voltarLogin() {
+        window.location.href = "login.html";
+    }
+
+    // ALTERAR QUANTIDADE NO CARD
+    function alterarQuantidade(botao, delta) {
+        const qtySpan = botao.parentElement.querySelector(".qty");
+        let valor = parseInt(qtySpan.textContent);
+
+        valor += delta;
+        if (valor < 0) valor = 0;
+
+        qtySpan.textContent = valor;
+    }
+
+    // ENVIAR PRODUTOS SELECIONADOS PARA O CARRINHO
+    function irCarrinho() {
+        const produtos = [];
+        const cards = document.querySelectorAll(".product-card");
+
+        cards.forEach(card => {
+            const nome = card.querySelector("h2").textContent;
+            const precoTexto = card.querySelector(".price").textContent.replace("R$", "").replace(",", ".").trim();
+            const preco = parseFloat(precoTexto);
+            const quantidade = parseInt(card.querySelector(".qty").textContent);
+
+            if (quantidade > 0) {
+                produtos.push({ nome, preco, quantidade });
+            }
+        });
+
+        localStorage.setItem("carrinho", JSON.stringify(produtos));
+        window.location.href = "Realizar-pedido.html";
+    }
+</script>
+
+</body>
+</html>

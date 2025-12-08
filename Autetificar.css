@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* CONTAINER PRINCIPAL (LOGIN / CADASTRO) */
+.auth-container {
+    width: 900px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    margin: 30px 0;
+}
+
+/* --- parte superior com fotos --- */
+.header-images {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.header-images img {
+    width: 100%;
+    height: 235px;
+    object-fit: cover;
+}
+
+/* --- área dos formulários --- */
+.form-area {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 22px;
+    text-align: left;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-group label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #444;
+    background: transparent;
+    padding: 8px 0;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #d32f2f;
+}
+
+.password-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon-eye {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* --- textos auxiliares --- */
+.helper-text {
+    margin-top: -10px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.text-switch {
+    margin: 20px 0 5px;
+    font-size: 14px;
+}
+
+/* --- botões --- */
+.btn {
+    width: 60%;
+    padding: 12px;
+    background: #e53935;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 18px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #c62828;
+}
+
+/* BOTÃO SECUNDÁRIO */
+.btn.secondary {
+    background: #ffffff;
+    color: #e53935;
+    border: 2px solid #e53935;
+}
+
+.btn.secondary:hover {
+    background: #ffe5e5;
+}
+
+/* 
+   RESPONSIVIDADE (MOBILE)
+   Telas até ~600px (celular)
+    */
+@media (max-width: 600px) {
+
+    body {
+        align-items: stretch;       /* ocupa a tela toda em altura */
+    }
+
+    .auth-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+        min-height: 100vh;
+        box-shadow: none;          /* some com a “caixa” flutuando, fica full screen */
+    }
+
+    .header-images img {
+        height: 180px;             /* reduz um pouco a altura da faixa de imagem */
+    }
+
+    .form-area {
+        padding: 24px 16px 32px;
+    }
+
+    .input-group {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .helper-text,
+    .text-switch {
+        font-size: 13px;
+    }
+}

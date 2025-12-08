@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Galeria de Fotos</title>
+    <link rel="stylesheet" href="Galeria.css">
+</head>
+<body>
+
+<div class="gallery-container">
+
+    <header class="gallery-header">
+        <div class="header-left">
+            <img src="Imagens/Cucas e Pães da Tia Rose 4.png" alt="Logo Tia Rose" class="gallery-logo">
+            <h1>O que você vai pedir hoje?</h1>
+        </div>
+
+        <div class="header-right">
+            <button class="cart-btn" onclick="irCarrinho()">🛒</button>
+        </div>
+    </header>
+
+    <section class="top-banner">
+        <h2>Galeria de fotos:</h2>
+    </section>
+
+    <button class="back-arrow" onclick="voltarSobreNos()">◀</button>
+
+    <main class="gallery-main">
+        <div class="gallery-grid">
+            <!-- Fotos -->
+            <img src="Imagens/produto2cabecalho.jpg" alt="Pães na Grade de Resfriamento">
+            <img src="Imagens/Cucas no forno.jpg" alt="Cucas no forno">
+            <img src="Imagens/Cucas na grade de resfriamento.jpg" alt="Cucas na Grade de Resfriamento">
+            <img src="Imagens/maxresdefault.jpg" alt="Pão de Milho Caseiro">
+            <img src="Imagens/Cucas Recém Tiradas da Fôrma.jpg" alt="Cucas Recém Tiradas da Fôrma">
+            <img src="Imagens/Cucas Recém Tiradas do Forno.jpg" alt="Cucas Recém Tiradas do Forno">
+            <img src="Imagens/Cucas Prontas para Entrega.jpg" alt="Cucas prontas para entrega">
+            <img src="Imagens/Pães e Cucas na Grade de Resfriamento.jpg" alt="Pães e Cucas na Grade de Resfriamento">
+            <img src="Imagens/Cucas sendo Desinformadas.jpg" alt="Cucas sendo Desinformadas">
+            <img src="Imagens/Produto1cabecalho.jpg" alt="Pães e Cucas Prontos para Embalar">
+            <img src="Imagens/DSCN3228.JPG" alt="Vista do Segundo Piso da Padaria ao Entardecer">
+            <img src="Imagens/Tia Rose.jpeg" alt="Tia Rose em Pessoa">
+        </div>
+    </main>
+
+</div>
+
+<!-- LIGHTBOX (VISUALIZAÇÃO EM TELA CHEIA) -->
+<div id="lightbox" class="lightbox" onclick="fecharLightbox(event)">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+    <p id="lightbox-caption"></p>
+</div>
+
+<script>
+    function voltarSobreNos() {
+        // Corrigido para bater com o nome real do arquivo
+        window.location.href = "Sobre-nos.html";
+    }
+
+    function irCarrinho() {
+        // Corrigido para bater com o nome real do arquivo
+        window.location.href = "Realizar-pedido.html";
+    }
+
+    // ---------- LIGHTBOX ----------
+    const imagensGaleria = document.querySelectorAll(".gallery-grid img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxCaption = document.getElementById("lightbox-caption");
+
+    imagensGaleria.forEach(img => {
+        img.addEventListener("click", () => {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxCaption.textContent = img.alt;
+            lightbox.classList.add("open");
+            document.body.style.overflow = "hidden"; // trava o scroll em background
+        });
+    });
+
+    function fecharLightbox(event) {
+        // Fecha se clicar no fundo escuro ou no botão X
+        if (event.target.id === "lightbox" || event.target.classList.contains("lightbox-close")) {
+            lightbox.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+    }
+
+    // Fecha com tecla Esc
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && lightbox.classList.contains("open")) {
+            lightbox.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Realizar Pedido</title>
+    <link rel="stylesheet" href="Realizar-pedido.css">
+</head>
+<body>
+
+<div class="checkout-container">
+
+    <header class="checkout-header">
+        <img src="Imagens/Cucas e Pães da Tia Rose 4.png" alt="Cucas e Pães da Tia Rose" class="checkout-logo">
+        <h1>Realizar Pedido</h1>
+        <!-- BOTÃO PARA VOLTAR À PÁGINA DE PRODUTOS -->
+        <button class="btn-back-produtos" onclick="voltarProdutos()">
+            Voltar para Produtos
+        </button>
+    </header>
+
+    <main class="checkout-main">
+
+        <section class="cart-summary">
+            <div class="cart-box">
+                <h2>Carrinho</h2>
+
+                <div id="itens-carrinho"></div>
+
+                <div class="cart-line subtotal">
+                    <span>Subtotal</span>
+                    <span id="subtotal">R$ 0,00</span>
+                </div>
+
+                <div class="cart-line">
+                    <span>Tele entrega</span>
+                    <span id="entrega">R$ 4,00</span>
+                </div>
+
+                <div class="cart-line total">
+                    <span>Total</span>
+                    <span id="total">R$ 0,00</span>
+                </div>
+
+                <button class="btn-clear" type="button" onclick="limparCarrinho()">Limpar Carrinho</button>
+            </div>
+        </section>
+
+        <section class="address-section">
+            <h2>Endereço de Entrega</h2>
+
+            <form id="checkout-form">
+
+                <div class="form-group">
+                    <label for="nome">Nome do Cliente</label>
+                    <input type="text" id="nome" class="required-field">
+                </div>
+
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" class="required-field">
+                </div>
+
+                <div class="form-group">
+                    <label for="rua">Rua</label>
+                    <input type="text" id="rua" class="required-field">
+                </div>
+
+                <div class="form-group">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="bairro" class="required-field">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="complemento">Complemento</label>
+                        <input type="text" id="complemento">
+                    </div>
+
+                    <div class="form-group small">
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero" class="required-field">
+                    </div>
+                </div>
+
+                <div class="total-line">
+                    <span>Valor Total</span>
+                    <span class="total-value">R$ 0,00</span>
+                </div>
+
+                <button type="submit" class="btn-submit">Realizar Pedido</button>
+
+            </form>
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+    // VALIDAÇÃO DO FORMULÁRIO E SALVAR DADOS DO PEDIDO
+    document.getElementById("checkout-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const requiredFields = document.querySelectorAll(".required-field");
+        let formValido = true;
+
+        requiredFields.forEach(function (input) {
+            input.classList.remove("error");
+            if (input.value.trim() === "") {
+                formValido = false;
+                input.classList.add("error");
+            }
+        });
+
+        if (!formValido) {
+            alert("Por favor, preencha todos os campos obrigatórios.");
+            return;
+        }
+
+        // Salvar nome do cliente
+        const nomeCliente = document.getElementById("nome").value.trim();
+        localStorage.setItem("nomeCliente", nomeCliente);
+
+        // Salvar data e hora do pedido
+        const agora = new Date();
+        const dataFormatada = agora.toLocaleDateString("pt-BR");
+        const horaFormatada = agora.toLocaleTimeString("pt-BR");
+
+        localStorage.setItem("dataPedido", dataFormatada);
+        localStorage.setItem("horaPedido", horaFormatada);
+
+        window.location.href = "Pedido-confirmado.html";
+    });
+
+    // FUNÇÃO PARA O BOTÃO "Voltar para Produtos"
+    function voltarProdutos() {
+        window.location.href = "Produtos.html";
+    }
+
+    // ------------ CARRINHO DINÂMICO ------------
+
+    function atualizarCarrinho() {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        const container = document.getElementById("itens-carrinho");
+        container.innerHTML = "";
+
+        let subtotal = 0;
+
+        carrinho.forEach((item, index) => {
+            const linha = document.createElement("div");
+            linha.classList.add("cart-line");
+
+            const totalItem = item.preco * item.quantidade;
+
+            linha.innerHTML = `
+                <span>${item.quantidade}× ${item.nome}</span>
+                <span>R$ ${totalItem.toFixed(2).replace(".", ",")}</span>
+                <button type="button" class="remove-item" onclick="removerItem(${index})">X</button>
+            `;
+
+            container.appendChild(linha);
+            subtotal += totalItem;
+        });
+
+        document.getElementById("subtotal").textContent = "R$ " + subtotal.toFixed(2).replace(".", ",");
+
+        const entrega = 4.00;
+        const total = subtotal + entrega;
+
+        document.getElementById("total").textContent = "R$ " + total.toFixed(2).replace(".", ",");
+
+        const totalSpan = document.querySelector(".total-value");
+        if (totalSpan) {
+            totalSpan.textContent = "R$ " + total.toFixed(2).replace(".", ",");
+        }
+
+        // Guardar total para a tela de pedido confirmado
+        localStorage.setItem("totalPedido", total.toFixed(2));
+    }
+
+    function removerItem(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        carrinho.splice(index, 1);
+        localStorage.setItem("carrinho", JSON.stringify(carrinho));
+        atualizarCarrinho();
+    }
+
+    function limparCarrinho() {
+        localStorage.removeItem("carrinho");
+        atualizarCarrinho();
+    }
+
+    // Atualiza o carrinho assim que a página carrega
+    atualizarCarrinho();
+</script>
+
+</body>
+</html>

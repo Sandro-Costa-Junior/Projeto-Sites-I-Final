@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Cucas e Pães da Tia Rose</title>
+    <link rel="stylesheet" href="Autetificar.css">
+</head>
+<body>
+
+<div class="auth-container">
+
+    <div class="header-images">
+        <img src="Imagens/Gambiaruis.png" alt="Pães e cucas">
+    </div>
+
+    <main class="form-area">
+
+        <form id="login-form">
+
+            <div class="input-group">
+                <label for="login-usuario">Email ou Nome de Usuário</label>
+                <input type="text" id="login-usuario" required>
+            </div>
+
+            <div class="input-group">
+                <label for="login-senha">Senha</label>
+                <div class="password-wrapper">
+                    <input type="password" id="login-senha" required>
+                    <span class="icon-eye" onclick="togglePassword('login-senha')"></span>
+                </div>
+            </div>
+
+            <p class="helper-text">Esqueceu sua senha?</p>
+
+            <button type="submit" class="btn primary">Login</button>
+
+        </form>
+
+        <p class="text-switch">Não é membro?<br>Inscreva-se</p>
+
+        <button class="btn secondary" onclick="irCadastro()">Inscrever-se</button>
+
+    </main>
+    
+</div>
+
+<script>
+    function togglePassword(id) {
+        const input = document.getElementById(id);
+        input.type = input.type === "password" ? "text" : "password";
+    }
+
+    function irCadastro() {
+        window.location.href = "register.html";
+    }
+
+    document.getElementById("login-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const usuario = document.getElementById("login-usuario").value.trim();
+        const senha = document.getElementById("login-senha").value.trim();
+
+        // LOGIN MESTRE
+        const usuarioCorreto = "nilsonhenriquecardoso@gmail.com";
+        const senhaCorreta = "Excalibur666";
+
+        if (usuario === usuarioCorreto && senha === senhaCorreta) {
+            window.location.href = "produtos.html";
+            return;
+        }
+
+        // LOGIN DO USUÁRIO CADASTRADO
+        const dadosSalvos = JSON.parse(localStorage.getItem("usuarioCadastro"));
+
+        if (dadosSalvos && usuario === dadosSalvos.email && senha === dadosSalvos.senha) {
+            window.location.href = "produtos.html";
+            return;
+        }
+
+        alert("Usuário ou senha incorretos.");
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro - Cucas e Pães da Tia Rose</title>
+    <link rel="stylesheet" href="Autetificar.css">
+</head>
+<body>
+
+<div class="auth-container">
+
+    <div class="header-images">
+        <img src="Imagens/Gambiaruis.png" alt="Pães e cucas">
+    </div>
+
+    <main class="form-area">
+
+        <form id="register-form">
+
+            <div class="input-group">
+                <label for="primeiro-nome">Primeiro nome</label>
+                <input type="text" id="primeiro-nome" required>
+            </div>
+
+            <div class="input-group">
+                <label for="nome-completo">Nome do meio e último</label>
+                <input type="text" id="nome-completo" required>
+            </div>
+
+            <div class="input-group">
+                <label for="cad-email">E-mail</label>
+                <input type="email" id="cad-email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="cad-senha">Senha</label>
+                <div class="password-wrapper">
+                    <input type="password" id="cad-senha" required>
+                    <span class="icon-eye" onclick="togglePassword('cad-senha')"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn primary">Inscrever-se</button>
+
+        </form>
+
+        <p class="text-switch">Já é membro?</p>
+        <button class="btn secondary" onclick="irLogin()">Faça Login</button>
+
+    </main>
+
+</div>
+
+<script>
+    function togglePassword(id) {
+        const input = document.getElementById(id);
+        input.type = input.type === "password" ? "text" : "password";
+    }
+
+    function irLogin() {
+        window.location.href = "Login.html";
+    }
+
+    // CADASTRO COM LOCALSTORAGE
+    document.getElementById("register-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const nome = document.getElementById("primeiro-nome").value.trim();
+        const sobrenome = document.getElementById("nome-completo").value.trim();
+        const email = document.getElementById("cad-email").value.trim();
+        const senha = document.getElementById("cad-senha").value.trim();
+
+        if (!nome || !sobrenome || !email || !senha) {
+            alert("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        const dadosUsuario = { nome, sobrenome, email, senha };
+        localStorage.setItem("usuarioCadastro", JSON.stringify(dadosUsuario));
+
+        alert("Cadastro realizado com sucesso!");
+        window.location.href = "Login.html";
+    });
+</script>
+
+</body>
+</html>
