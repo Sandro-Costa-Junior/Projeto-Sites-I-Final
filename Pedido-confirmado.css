@@ -124,9 +124,7 @@ body {
     background: #244690;
 }
 
-/* ===========================================
-   RESPONSIVIDADE — MOBILE
-   =========================================== */
+/* RESPONSIVIDADE — MOBILE */
 
 /* Celulares até 768px */
 @media (max-width: 768px) {

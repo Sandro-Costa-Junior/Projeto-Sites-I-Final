@@ -23,7 +23,7 @@ body {
     margin: 30px 0;
 }
 
-/* --- parte superior com fotos --- */
+/* parte superior com fotos */
 .header-images {
     display: grid;
     grid-template-columns: 1fr;
@@ -35,7 +35,7 @@ body {
     object-fit: cover;
 }
 
-/* --- área dos formulários --- */
+/* área dos formulários */
 .form-area {
     padding: 40px 20px;
     text-align: center;
